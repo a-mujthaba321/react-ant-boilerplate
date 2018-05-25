@@ -1,48 +1,68 @@
+
+import { Icon, Layout, Menu, Row } from 'antd';
 import React, { Component } from 'react';
 
-import { Layout } from 'antd';
-
-const {
-  Header, Footer, Sider, Content
-} = Layout;
-
+const { Header, Sider, Content } = Layout;
 
 export default class Body extends Component {
+  constructor() {
+    super();
+    this.state = {
+      collapsed: false,
+    };
+    this.toggle = this.toggle.bind(this);
+
+  }
+
+  toggle() {
+    this.setState({
+      collapsed: !this.state.collapsed,
+    });
+  }
+
   render() {
     return (
         <div>
-    <Layout>
-      <Header>Header</Header>
-      <Content>Content</Content>
-      <Footer>Footer</Footer>
-    </Layout>
-
-    <Layout>
-      <Header>Header</Header>
-      <Layout>
-        <Sider>Sider</Sider>
-        <Content>Content</Content>
-      </Layout>
-      <Footer>Footer</Footer>
-    </Layout>
-
-    <Layout>
-      <Header>Header</Header>
-      <Layout>
-        <Content>Content</Content>
-        <Sider>Sider</Sider>
-      </Layout>
-      <Footer>Footer</Footer>
-    </Layout>
-
-    <Layout>
-      <Sider>Sider</Sider>
-      <Layout>
-        <Header>Header</Header>
-        <Content>Content</Content>
-        <Footer>Footer</Footer>
-      </Layout>
-    </Layout>
+          <Row>
+          <Layout>
+            <Sider
+              trigger={null}
+              collapsible
+              collapsed={this.state.collapsed}
+            >
+              <div className="logo" />
+              <Menu theme="light" mode="inline" defaultSelectedKeys={['1']}>
+                <Menu.Item key="1">
+                  <Icon type="user" />
+                  <span>Institutes</span>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Icon type="video-camera" />
+                  <span>Loan Schemes</span>
+                </Menu.Item>
+                <Menu.Item key="3">
+                  <Icon type="upload" />
+                  <span>Scholarship Schemes</span>
+                </Menu.Item>
+              </Menu>
+            </Sider>
+            <Layout>
+              <Header >
+                <Icon
+                  className="trigger"
+                  type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
+                  onClick={this.toggle}
+                />
+              </Header>
+              <Content style={{
+                        margin: '24px 16px', padding: 24, background: '#fff', minHeight: 280
+                        }}
+              >
+                Content
+              </Content>
+            </Layout>
+          </Layout>
+          </Row>
         </div>
     );
   }
