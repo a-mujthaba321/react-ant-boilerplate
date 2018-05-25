@@ -85,9 +85,6 @@
       "react-app"
     ]
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
     "eslint-config-airbnb": "^16.1.0",

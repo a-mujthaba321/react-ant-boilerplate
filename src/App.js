@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Button from 'antd/lib/button';
-import Sidebar from './components/Sidebar';
+import Body from './components/Body';
 
 
 class App extends Component {
@@ -8,7 +7,8 @@ class App extends Component {
     return (
       <div>
 
-      <Sidebar />
+      {/* <Sidebar /> */}
+      <Body />
 
       </div>
     );
